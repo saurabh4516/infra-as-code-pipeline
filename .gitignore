@@ -26,3 +26,23 @@ npm-debug.log
 # OS
 .DS_Store
 Thumbs.db
+
+# AWS CLI installation files
+aws/
+
+# Terraform generated files and state
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+
+# Credentials and secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Node.js dependencies
+node_modules/
+awscliv2.zip
