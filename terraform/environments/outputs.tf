@@ -38,3 +38,7 @@ output "alb_dns_name" {
   description = "Public URL of the application"
   value       = module.ecs.alb_dns_name
 }
+output "github_actions_role_arn" {
+  description = "IAM role ARN used by GitHub Actions for CI/CD"
+  value       = module.github_oidc.github_actions_role_arn
+}

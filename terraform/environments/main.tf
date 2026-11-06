@@ -60,3 +60,20 @@ module "ecs" {
     ManagedBy   = "Terraform"
   }
 }
+module "github_oidc" {
+  source = "../modules/github-oidc"
+
+  project_name      = var.project_name
+  github_repository = "saurabh4516/infra-as-code-pipeline"
+  aws_region        = "ap-south-1"
+
+  ecr_repository_arn     = module.ecr.repository_arn
+  ecs_service_arn        = module.ecs.service_arn
+  ecs_execution_role_arn = module.ecs.execution_role_arn
+
+  common_tags = {
+    Project     = "Ecommerce-DevOps"
+    Environment = terraform.workspace
+    ManagedBy   = "Terraform"
+  }
+}
