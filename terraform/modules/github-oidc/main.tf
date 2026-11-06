@@ -23,7 +23,7 @@ resource "aws_iam_role" "github_actions" {
           StringEquals = {
             "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
 
-            # Match the immutable subject from the GitHub OIDC token
+            # GitHub immutable repository subject
             "token.actions.githubusercontent.com:sub" = "repo:saurabh4516@190055908/infra-as-code-pipeline@1447922708:ref:refs/heads/main"
           }
         }
@@ -54,6 +54,7 @@ resource "aws_iam_role_policy" "github_actions" {
 
         Action = [
           "ecr:BatchCheckLayerAvailability",
+          "ecr:BatchGetImage",
           "ecr:CompleteLayerUpload",
           "ecr:InitiateLayerUpload",
           "ecr:PutImage",
